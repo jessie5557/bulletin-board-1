@@ -12,7 +12,24 @@
 
   <body>
     <a href="/">Bulletin Board</a>
+
     <hr>
+
+    <% if notice.present? %>
+      <div>
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div>
+        <%= alert %>
+      </div>
+    <% end %>
+
+    <hr>
+    
     <%= yield %>
   </body>
+
 </html>
