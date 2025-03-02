@@ -42,14 +42,9 @@
 
     <input type="date" id="post_expires_on_box" name="query_expires_on">
   </div>
+    
+  <input type="hidden" id="post_board_id" name="query_board_id" value="<%= @the_board.id %>">
 
-  <div>
-    <label for="post_board_id">
-      Board ID
-    </label>
-
-    <input type="text" id="post_board_id" name="query_board_id">
-  </div>
 
   <button>
     Add post
@@ -72,7 +67,7 @@ Active posts
     <th>Expires on</th>
   </tr>
 
-  <% matching_posts = Post.where({ :board_id => @the_board.id })%>
+  <% matching_posts = Post.where({ :board_id => @the_board.id }).order({ :expires_on => :asc })%>
   <% matching_posts.each do |a_post| %>
     <tr>
       <td><%= a_post.title %></td>
